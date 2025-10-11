@@ -17,7 +17,7 @@ library(forcats)
 # File preparation
 # ============================================
 # background genes
-universe <- read.delim("/scripts/05_functional_analysis/enrichment_inputs/longest_protein.txt", header = FALSE, sep = "\t", stringsAsFactors = FALSE)[, 1]
+universe <- read.delim("/data/heacon5_longest_protein_isoform.txt", header = FALSE, sep = "\t", stringsAsFactors = FALSE)[, 1]
 # Go term to gene 
 go_annotations <- read.table("/scripts/05_functional_analysis/enrichment_inputs/GO_annotation.txt", header = FALSE, stringsAsFactors = FALSE)
 colnames(go_annotations) <- c("gene", "GOs")
@@ -83,7 +83,7 @@ kegg_term <- read_tsv(
 )
 
 # promoter accessible gene
-pag <- read.table("/results/04_promoter_accessible_genes/promoter_accessible_genes.txt", 
+pag <- read.table("/results/04_promoter_accessible_genes/heacon5_promoter_accessible_genes.txt", 
                        header = FALSE, 
                        sep = "\t", 
                        stringsAsFactors = FALSE,
@@ -93,7 +93,7 @@ pag_df <- as.data.frame(table(pag$gene_id))
 colnames(pag_df) <- c("gene_id", "transcript_count")
 
 protein_gene_mapping <- read.table(
-  "/scripts/05_functional_analysis/enrichment_inputs/heacon5_protein_gene_mapping.txt",
+  "/data/heacon5_longest_protein_isoform_and_gene_mapping.txt",
   header = FALSE, stringsAsFactors = FALSE
 )
 colnames(protein_gene_mapping) <- c("protein", "gene")
